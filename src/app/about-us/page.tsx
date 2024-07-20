@@ -1,18 +1,20 @@
 import Image from "next/image";
 import React from "react";
 import { Homemade_Apple } from "next/font/google";
+import { getRandomRecipe } from "../actions";
 import authorImage from "../../../public/images/AuthorImage1.jpg";
 import ShareOrFollow from "@/components/modules/share&follow/ShareOrFollow";
-import aboutUsImage1 from "../../../public/images/aboutus.jpg";
-import aboutUsImage2 from "../../../public/images/aboutus2.jpg";
-import aboutUsImage3 from "../../../public/images/aboutus3.jpg";
-import aboutUsImage4 from "../../../public/images/aboutus4.jpg";
-import aboutUsImage5 from "../../../public/images/aboutus5.jpg";
-import aboutUsImage6 from "../../../public/images/aboutus6.jpg";
-import aboutUsImage7 from "../../../public/images/aboutus7.jpg";
-import aboutUsImage8 from "../../../public/images/aboutus8.jpg";
+import aboutUsImage1 from "../../../public/images/aboutUs/aboutus.jpg";
+import aboutUsImage2 from "../../../public/images/aboutUs/aboutus2.jpg";
+import aboutUsImage3 from "../../../public/images/aboutUs/aboutus3.jpg";
+import aboutUsImage4 from "../../../public/images/aboutUs/aboutus4.jpg";
+import aboutUsImage5 from "../../../public/images/aboutUs/aboutus5.jpg";
+import aboutUsImage6 from "../../../public/images/aboutUs/aboutus6.jpg";
+import aboutUsImage7 from "../../../public/images/aboutUs/aboutus7.jpg";
+import aboutUsImage8 from "../../../public/images/aboutUs/aboutus8.jpg";
 import RecipeSlider from "@/components/modules/recipeSlider/RecipeSlider";
 import SubscribeUs from "@/components/modules/subscribe/SubscribeUs";
+
 const HomemadeApple = Homemade_Apple({
   subsets: ["latin"],
   weight: ["400"],
@@ -20,9 +22,8 @@ const HomemadeApple = Homemade_Apple({
 });
 
 const AboutUs = async () => {
-  const res = await fetch("http://localhost:3000/api/featuredRecipes");
-  const resData = await res.json();
-  const { allFeaturedRecipes } = resData;
+  const allFeaturedRecipes = await getRandomRecipe();
+
   return (
     <div className='space-y-8 md:space-y-16'>
       <div className='flex flex-col md:flex-row items-center child:md:w-1/2 gap-6 h-full mt-16 '>
@@ -96,7 +97,7 @@ const AboutUs = async () => {
           <Image src={aboutUsImage8} alt='about us CooKing Image' />
         </div>
       </div>
-      <RecipeSlider recipes={allFeaturedRecipes} title='Featured Reipes' />
+      <RecipeSlider recipes={allFeaturedRecipes} title='Featured Recipes' />
       <SubscribeUs />
     </div>
   );

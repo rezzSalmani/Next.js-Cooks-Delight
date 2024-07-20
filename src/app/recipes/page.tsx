@@ -62,8 +62,8 @@ const Recipes = async ({ searchParams }: SearchParamsType) => {
       <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 lg:gap-4'>
         {data?.map((category: CategoryType) => (
           <Link
-            href={`/recipes?category=${category.strCategory}`}
-            className='flex flex-col items-center justify-center group text-center rounded-2xl shadow-md hover:shadow-lg transition-all ease-linear cursor-pointer space-y-3 px-2 py-4 border border-transparent hover:border-primary-dark/10 hover:scale-105'
+            href={`/recipes?category=${category.strCategory}#recipes`}
+            className='flex flex-col items-center justify-center group text-center rounded-2xl shadow-md hover:shadow-lg transition-all ease-linear cursor-pointer space-y-3 px-2 pt-4 border border-transparent hover:border-primary-dark/10 hover:scale-105'
             key={category.idCategory}
           >
             <Image
@@ -74,7 +74,7 @@ const Recipes = async ({ searchParams }: SearchParamsType) => {
               height={300}
             />
             <span
-              className={`${HomemadeApple.className} inline-block w-full text-xl xl:text-2xl  text-ellipsis  overflow-hidden text-primary-dark/60 group-hover:text-primary-dark transition-colors ease-linear border-t border-primary-dark/10 pt-4 `}
+              className={`${HomemadeApple.className} inline-block w-full text-xl xl:text-2xl  text-ellipsis overflow-hidden text-primary-dark/60 group-hover:text-primary-dark transition-colors ease-linear border-t border-primary-dark/10 py-4 `}
             >
               {category.strCategory}
             </span>
@@ -82,7 +82,11 @@ const Recipes = async ({ searchParams }: SearchParamsType) => {
         ))}
       </div>
       {searchParams?.category ? (
-        <div className='space-y-10' id='recipes'>
+        <div
+          className='space-y-10'
+          id='recipes'
+          style={{ scrollBehavior: "smooth" }}
+        >
           <h6 className='font-montserrat font-bold text-4xl text-center'>
             All Recipes in {searchParams.category} Category
           </h6>

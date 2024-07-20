@@ -10,15 +10,17 @@ const Navbar = () => {
       <nav className='flex items-center justify-between w-full border border-[rgba(38,37,34,0.24)] rounded-4xl p-3 md:py-4  mt-2.5 backdrop-blur-lg shadow-lg'>
         {/* desktop navBar */}
         <div className='hidden md:flex items-center justify-between w-full text-primary-dark'>
-          <div className='flex items-center gap-3 font-roboto font-bold'>
-            <Link href={"/"}>
-              <Image src={mainLogo} alt='logo' />
-            </Link>
+          <Link
+            href={"/"}
+            className='flex items-center gap-3 font-roboto font-bold'
+          >
+            <Image src={mainLogo} alt='logo' />
             <div className='flex flex-col leading-5'>
               <span>Cooks</span>
               <span>Delight</span>
             </div>
-          </div>
+          </Link>
+
           <NavLinks />
           <div className='flex items-center gap-4'>
             <NavbarSearch />

@@ -4,7 +4,7 @@ import Hero from "@/components/templates/hero/Hero";
 import Services from "@/components/templates/services/Services";
 import RecipeSlider from "@/components/modules/recipeSlider/RecipeSlider";
 import SubscribeUs from "@/components/modules/subscribe/SubscribeUs";
-import Image from "next/image";
+import { getRandomRecipe } from "./actions";
 
 interface CategoryResponse {
   meals: {
@@ -29,9 +29,10 @@ export default async function Home() {
     console.error("Error fetching categories:", error);
   }
 
-  const res = await fetch("http://localhost:3000/api/featuredRecipes");
-  const resData = await res.json();
-  const { allFeaturedRecipes } = resData;
+  const allFeaturedRecipes = await getRandomRecipe();
+  // const res = await fetch("http://localhost:3000/api/featuredRecipes");
+  // const resData = await res.json();
+
   // let allFeaturedRecipes: {
   //   strMeal: string;
   //   strMealThumb: string;
@@ -59,7 +60,7 @@ export default async function Home() {
       <Services />
       <RecipeSlider recipes={allFeaturedRecipes} title={"featured recipes"} />
       <Category CATEGORY_ITEMS={CATEGORY_ITEMS} />
-      <AboutUs></AboutUs>
+      <AboutUs />
       <SubscribeUs />
     </main>
   );

@@ -6,7 +6,7 @@ import React from "react";
 const navLicks = [
   { title: "Home", url: "/" },
   { title: "recipes", url: "/recipes" },
-  { title: "cooking tips", url: "/tips" },
+  { title: "cooking tips", url: "/tips-tricks" },
   { title: "about us", url: "/about-us" },
 ];
 const NavLinks = ({ isFooter = false }) => {
@@ -23,16 +23,26 @@ const NavLinks = ({ isFooter = false }) => {
         <li className='group' key={item.title}>
           <Link
             href={item.url}
-            className={`${
+            className={`hover:scale-105 transition-all ease-linear ${
               !isFooter && currentPath && item.url === currentPath
-                ? "text-primary-dark"
-                : "text-primary-dark/60 "
-            } ${isFooter ? "text-primary-light" : "text-primary-dark"}`}
+                ? "text-primary-dark font-bold "
+                : "text-primary-dark/40 "
+            } ${
+              isFooter
+                ? "text-primary-light"
+                : "text-primary-dark hover:text-primary-dark"
+            }`}
           >
             {item.title}
           </Link>
           {!isFooter ? (
-            <span className='absolute left-0 right-0 mx-auto -bottom-2 w-0 group-hover:w-full h-1 rounded-xl bg-primary-red transition-all ease-linear duration-250 delay-100'></span>
+            <span
+              className={`absolute left-0 right-0 mx-auto -bottom-2 h-1 rounded-xl bg-primary-red transition-all ease-linear duration-300 delay-100 ${
+                currentPath && item.url === currentPath
+                  ? "w-full opacity-100 visible"
+                  : "w-0 opacity-0 invisible"
+              }`}
+            ></span>
           ) : null}
         </li>
       ))}

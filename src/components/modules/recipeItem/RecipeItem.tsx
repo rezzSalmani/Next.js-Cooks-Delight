@@ -7,7 +7,7 @@ type RecipeItemProps = {
     strMeal: string;
     strMealThumb: string;
     idMeal: string;
-    strCategory: string;
+    strCategory?: string;
     strInstructions: string;
   };
   activeCategory?: string | null;
@@ -25,11 +25,11 @@ const RecipeItem = ({ recipe, activeCategory = null }: RecipeItemProps) => {
       <Image
         src={recipe.strMealThumb}
         alt='featured recipes'
-        width={900}
-        height={900}
+        width={500}
+        height={500}
         className='fix-Image rounded-t-4xl h-40 md:h-[234px] object-cover object-center hover:scale-105 transition-all ease-linear'
       />
-      <div className='relative px-3 md:px-6 pt-3 pb-3 bg-[#fffbf2] rounded-b-4xl space-y-1 md:space-y-3'>
+      <div className='relative px-3 md:px-6 pt-3 pb-3 bg-[#fffbf2] rounded-b-4xl space-y-1 md:space-y-3 h-full'>
         {/* special recipe */}
         <span className='absolute -top-12 right-10'>
           {activeCategory === "Vegan" ||

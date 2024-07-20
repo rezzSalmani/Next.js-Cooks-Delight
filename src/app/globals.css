@@ -5,13 +5,13 @@
 :root {
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
+} */
 
 body {
   background-color: #f0ebe1;
@@ -33,4 +33,7 @@ body {
   -ms-transform: translateZ(0); /* IE 9 */
   -webkit-transform: translateZ(0); /* Chrome, Safari, Opera */
   transform: translateZ(0);
+}
+.custom-dark-overly {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #262522 100%);
 }

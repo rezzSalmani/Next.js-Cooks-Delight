@@ -1,8 +1,7 @@
 import ShareOrFollow from "@/components/modules/share&follow/ShareOrFollow";
 import RecipeSlider from "@/components/modules/recipeSlider/RecipeSlider";
 import SubscribeUs from "@/components/modules/subscribe/SubscribeUs";
-import { url } from "inspector";
-import { redirect } from "next/dist/server/api-utils";
+import { notFound } from "next/navigation";
 import Image from "next/image";
 import React from "react";
 
@@ -13,12 +12,13 @@ async function RecipeDetail({ params }: { params: { recipesId: string } }) {
     const res = await fetch(
       `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${+params.recipesId}`
     );
-    // if (!res.ok) return redirect("/");
+
     const resData = await res.json();
     data = resData.meals[0];
   } catch (err) {
     console.log(err);
   }
+  if (!data) notFound();
   try {
     const res = await fetch(
       `https://www.themealdb.com/api/json/v1/1/filter.php?c=${data.strCategory}`

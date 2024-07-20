@@ -105,14 +105,14 @@ const NavbarSearch = () => {
             name=''
             id=''
             placeholder='Enter meal name'
-            className='w-full  outline-none '
+            className='w-full outline-none  bg-transparent'
             ref={searchValue}
           />
           <span className='block cursor-pointer' onClick={findRecipes}>
             Search
           </span>
         </div>
-        <ul className='flex flex-col items-center py-2 child:py-2 w-full h-full overflow-y-auto divide-y '>
+        <ul className='flex flex-col items-center pb-4 child:py-2 w-full h-full overflow-y-auto divide-y'>
           {searchedRecipes?.slice(0, 10).map((recipe) => (
             <li
               className='flex w-full items-center justify-between gap-2 text-primary-dark/50 hover:text-primary-dark transition-all ease-linear '
