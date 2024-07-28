@@ -27,9 +27,9 @@ const RecipeItem = ({ recipe, activeCategory = null }: RecipeItemProps) => {
         alt='featured recipes'
         width={500}
         height={500}
-        className='fix-Image rounded-t-4xl h-40 md:h-[234px] object-cover object-center hover:scale-105 transition-all ease-linear'
+        className='fix-Image rounded-t-4xl  h-[234px] object-cover object-center hover:scale-105 transition-all ease-linear w-full'
       />
-      <div className='relative px-3 md:px-6 pt-3 pb-3 bg-[#fffbf2] rounded-b-4xl space-y-1 md:space-y-3 h-full'>
+      <div className='relative px-3 md:px-6 py-3 bg-[#fffbf2] rounded-b-4xl space-y-1 md:space-y-3 h-full'>
         {/* special recipe */}
         <span className='absolute -top-12 right-10'>
           {activeCategory === "Vegan" ||
@@ -52,7 +52,6 @@ const RecipeItem = ({ recipe, activeCategory = null }: RecipeItemProps) => {
           {(recipe.strInstructions && recipe.strInstructions) ||
             `Indulge in the rich and savory symphony of flavors with our Savory Herb-Infused Chicken`}
         </span>
-
         <span className='flex items-center font-semibold text-xs gap-1'>
           <span>40 Min</span>-<span>easy prep</span>-<span>3 serves</span>
         </span>

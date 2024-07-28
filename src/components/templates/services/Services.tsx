@@ -202,28 +202,28 @@ const SERVICES_ITEMS = [
 ];
 function Services() {
   return (
-    <div className='flex items-end justify-between bg-primary-lightBlue shadow-sm rounded-[32px] p-6 md:p-10 w-full h-full '>
-      <div className='flex flex-col items-start justify-end gap-4 w-fit h-full'>
+    <section className='flex items-end justify-between gap-4 flex-col md:flex-row bg-primary-lightBlue shadow-sm rounded-[32px] p-6 md:p-10 w-full h-full '>
+      <div className='flex flex-col items-start justify-end gap-2 md:gap-4  md:w-fit h-full'>
         <span className='bg-primary-red text-sm text-white uppercase font-roboto font-medium rounded-2xl py-1 px-2'>
           explore
         </span>
-        <h6 className='font-montserrat text-[40px] font-bold uppercase child:block leading-10'>
+        <h6 className='font-montserrat text-3xl md:text-[40px] font-bold uppercase child:block leading-1'>
           Our diverse
           <span>Palette</span>
         </h6>
-        <p className='font-light text-[rgba(38,37,34,0.8)] w-[60%]'>
+        <p className='font-light text-sm md:text-base text-justify text-[rgba(38,37,34,0.8)] md:w-[60%]'>
           If you are a breakfast enthusiast, a connoisseur of savory delights,
           or on the lookout for irresistible desserts, our curated selection has
           something to satisfy every palate.
         </p>
-        <button className='text-sm font-semibold uppercase text-primary-dark py-2 px-6 border border-primary-dark rounded-3xl hover:shadow-md hover:bg-primary-light/30 transition-all ease-linear active:scale-95'>
+        <button className=' text-sm font-medium uppercase text-primary-dark py-1 md:py-2 px-3 md:px-6 border border-primary-dark rounded-3xl hover:shadow-md hover:bg-primary-light/30 transition-all ease-linear active:scale-95'>
           See More
         </button>
       </div>
-      <div className='w-1/2 uppercase space-y-6'>
+      <div className=' w-full md:w-1/2 uppercase space-y-3 md:space-y-6'>
         {SERVICES_ITEMS.map((item) => (
           <div
-            className='flex items-center justify-between w-full border-b border-[rgba(38,37,34,0.16)] child:block py-2 font-montserrat font-semibold text-lg'
+            className='flex items-center justify-between w-full border-b border-[rgba(38,37,34,0.16)] child:block py-2 font-montserrat font-semibold md:text-lg'
             key={item.title}
           >
             <span>{item.icon}</span>
@@ -231,7 +231,7 @@ function Services() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

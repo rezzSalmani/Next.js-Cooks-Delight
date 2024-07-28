@@ -66,7 +66,7 @@ const Category = ({ CATEGORY_ITEMS }: CategoryProps) => {
       <div className='flex items-center justify-center flex-wrap gap-3 mt-10'>
         {CATEGORY_ITEMS?.map((item, index) => (
           <button
-            className={`font-roboto text-sm font-medium hover:text-primary-dark px-6 py-2 rounded-3xl border border-primary-dark/40 hover:border-primary-dark transition-all ease-linear uppercase hover:shadow-md active:scale-95 ${
+            className={`font-roboto text-sm font-medium hover:text-primary-dark px-3 md:px-6 py-1 md:py-2 rounded-3xl border border-primary-dark/40 hover:border-primary-dark transition-all ease-linear uppercase hover:shadow-md active:scale-95 ${
               activeCategory === item.strCategory
                 ? "bg-primary-green text-primary-dark"
                 : "bg-transparent text-primary-dark/50"
@@ -111,10 +111,10 @@ const Category = ({ CATEGORY_ITEMS }: CategoryProps) => {
               />
             ))}
       </div>
-      <div className='flex items-center justify-center py-10'>
+      <div className='flex items-center justify-center py-5 md:py-10'>
         {!isLoading && categoryRecipes.length > 8 ? (
           <button
-            className='border border-primary-dark/50  rounded-4xl px-6 py-3 font-montserrat  shadow-md hover:shadow-xl transition-all ease-linear active:scale-95 hover:font-medium active:font-medium active:shadow-none hover:border-primary-dark'
+            className='border border-primary-dark/50  text-sm md:text-base rounded-4xl px-3 md:px-6 py-1.5 md:py-3 font-montserrat  shadow-md hover:shadow-xl transition-all ease-linear active:scale-95 hover:font-medium active:font-medium active:shadow-none hover:border-primary-dark'
             onClick={() => {
               setRecipeCount((prev) => (prev === 8 ? 12 : 8));
             }}
