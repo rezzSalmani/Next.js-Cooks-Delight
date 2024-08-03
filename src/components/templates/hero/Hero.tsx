@@ -6,7 +6,7 @@ type Props = {};
 const Hero = (props: Props) => {
   return (
     <section className='w-full'>
-      <div className='flex flex-col text-white items-center justify-center gap-3 w-full h-[640px] md:h-[580px] rounded-3xl bg-[url("/images/HeroSection.jpg")] bg-no-repeat bg-cover bg-center'>
+      <div className='flex flex-col text-white items-center justify-center gap-3 w-full h-[640px] md:h-[580px] rounded-3xl bg-[url("/images/HeroSection.jpg")] bg-no-repeat bg-cover bg-center overflow-hidden'>
         <h1 className=' text-4xl md:text-[60px] lg:text-[80px] font-montserrat font-extrabold text-center uppercase md:leading-[1] w-[90%] xs:w-4/5 md:w-1/2'>
           Unleash Culinary Excellence
         </h1>

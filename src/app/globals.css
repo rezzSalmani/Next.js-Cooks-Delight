@@ -37,3 +37,7 @@ body {
 .custom-dark-overly {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #262522 100%);
 }
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}

@@ -21,15 +21,15 @@ function checkIfVegan(food: string) {
 }
 const RecipeItem = ({ recipe, activeCategory = null }: RecipeItemProps) => {
   return (
-    <div className='flex flex-col shadow-sm rounded-4xl overflow-hidden '>
+    <div className='flex flex-col shadow-sm rounded-4xl overflow-hidden'>
       <Image
         src={recipe.strMealThumb}
         alt='featured recipes'
         width={500}
         height={500}
-        className='fix-Image rounded-t-4xl  h-[234px] object-cover object-center hover:scale-105 transition-all ease-linear w-full'
+        className='fix-Image rounded-t-4xl h-[160px] md:h-[234px] object-cover object-center hover:scale-105 transition-all ease-linear w-full'
       />
-      <div className='relative px-3 md:px-6 py-3 bg-[#fffbf2] rounded-b-4xl space-y-1 md:space-y-3 h-full'>
+      <div className='relative px-3 md:px-6 py-3 bg-[#fffbf2] rounded-b-4xl space-y-2 lg:space-y-3 h-auto '>
         {/* special recipe */}
         <span className='absolute -top-12 right-10'>
           {activeCategory === "Vegan" ||
@@ -48,17 +48,17 @@ const RecipeItem = ({ recipe, activeCategory = null }: RecipeItemProps) => {
         <h6 className='font-montserrat font-bold text-base sm:text-xl md:text-2xl truncate  hover:animate-pulse'>
           {recipe.strMeal}
         </h6>
-        <span className='font-light text-sm md:text-base text-primary-dark/50 text-wrap line-clamp-3'>
+        <p className='line-clamp-3 font-light text-sm md:text-base text-primary-dark/50 text-wrap h-[76px]'>
           {(recipe.strInstructions && recipe.strInstructions) ||
             `Indulge in the rich and savory symphony of flavors with our Savory Herb-Infused Chicken`}
-        </span>
+        </p>
         <span className='flex items-center font-semibold text-xs gap-1'>
           <span>40 Min</span>-<span>easy prep</span>-<span>3 serves</span>
         </span>
         <div className='w-full flex items-end justify-end pt-1'>
           <Link
             href={"/recipes/" + recipe.idMeal}
-            className='border font-semibold font-roboto text-primary-dark/70 text-xs xs:text-sm  hover:text-primary-dark border-primary-dark/50 hover:border-primary-dark uppercase rounded-4xl  px-3 py-1 md:px-6 md:py-2 transition-all ease-linear hover:shadow-md active:scale-95'
+            className='border font-semibold font-roboto text-primary-dark/70 text-xs sm:text-sm  hover:text-primary-dark border-primary-dark/50 hover:border-primary-dark uppercase rounded-4xl  px-3 py-1 md:px-6 md:py-2 transition-all ease-linear hover:shadow-md active:scale-95'
           >
             view recipe
           </Link>

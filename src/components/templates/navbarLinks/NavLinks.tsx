@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-const navLicks = [
+export const navLicks = [
   { title: "Home", url: "/" },
   { title: "recipes", url: "/recipes" },
   { title: "cooking tips", url: "/tips-tricks" },

@@ -7,7 +7,7 @@ import FooterSearch from "@/components/templates/footerSearch/FooterSearch";
 
 const Footer = () => {
   return (
-    <footer className='mt-6 md:mt-10 px-10 py-6 bg-primary-dark rounded-4xl text-primary-light space-y-4'>
+    <footer className=' mt-6 md:mt-10 px-5 md:px-10 py-6 bg-primary-dark rounded-4xl text-primary-light space-y-4'>
       <div className='flex flex-col md:flex-row items-center justify-between gap-4'>
         <div className='flex items-center gap-3 font-roboto font-medium'>
           <Link href={"/"}>

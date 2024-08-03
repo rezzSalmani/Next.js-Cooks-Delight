@@ -8,12 +8,12 @@ const TipsSlider = ({ tips }: { tips: Tip[] }) => {
   const [swiperControll, setSwiperControll] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <div className='p-10 bg-primary-lightBlue rounded-4xl space-y-10'>
+    <div className='p-4 md:p-10 bg-primary-lightBlue rounded-4xl space-y-4 md:space-y-10'>
       <div className='flex items-center justify-between mt-6'>
-        <h6 className='font-montserrat text-[40px]  font-bold '>
+        <h6 className='font-montserrat text-3xl md:text-[40px]  font-bold '>
           Nourishing Every Palate
         </h6>
-        <div className='flex items-center justify-end  w-fit gap-2 child:block child:w-fit child:border child:rounded-full child:p-1 child:md:p-1.5 child:cursor-pointer'>
+        <div className='flex items-center flex-wrap justify-end  w-fit gap-2 child:block child:w-fit child:border child:rounded-full child:p-1 child:md:p-1.5 child:cursor-pointer'>
           {/* move to left */}
           <button
             onClick={() => swiperControll?.slidePrev()}
@@ -65,7 +65,7 @@ const TipsSlider = ({ tips }: { tips: Tip[] }) => {
         </div>
       </div>
       <Swiper
-        slidesPerView={3}
+        slidesPerView={1}
         spaceBetween={16}
         onSwiper={(swiper) => setSwiperControll(swiper)}
         onSlideChange={() => setActiveIndex(swiperControll?.activeIndex)}
@@ -78,16 +78,23 @@ const TipsSlider = ({ tips }: { tips: Tip[] }) => {
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        loop
+        breakpoints={{
+          768: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+        }}
       >
         {tips?.map((tip) => (
           <SwiperSlide>
             <div
-              className={`flex items-end relative bg-center bg-cover min-h-[464px] bg-no-repeat rounded-3xl overflow-hidden p-6 group`}
+              className={`flex items-end relative bg-center bg-cover min-h-[364px] md:min-h-[464px] bg-no-repeat rounded-3xl overflow-hidden p-6 group`}
               style={{ backgroundImage: `url(${tip.image})` }}
             >
-              <span className='absolute inset-0 w-full h-full transition-all ease-linear custom-dark-overly translate-y-60  group-hover:translate-y-0'></span>
-              <div className='child:inline-flex text-[#f0ebe1] z-20 space-y-3 transition-all ease-linear duration-300 translate-y-60 group-hover:translate-y-0'>
+              <span className='absolute inset-0 w-full h-full transition-all ease-linear custom-dark-overly translate-y-80  group-hover:translate-y-0'></span>
+              <div className='child:inline-flex text-[#f0ebe1] z-20 space-y-3 transition-all ease-linear duration-300 translate-y-80 group-hover:translate-y-0'>
                 <span className='font-montserrat text-2xl font-bold'>
                   {tip.title}
                 </span>

@@ -28,9 +28,8 @@ const FooterSearch = () => {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
       const resData = await res.json();
-      console.log(resData.meals);
-      if (!resData.meals) return setSearchedRecipes([]);
 
+      if (!resData.meals) return setSearchedRecipes([]);
       setSearchedRecipes(resData.meals);
     } catch (err) {
       console.log("there was error fetching recipes", err);
@@ -38,6 +37,9 @@ const FooterSearch = () => {
       setIsLoading(false);
     }
   }
+  const clearRecipes = () => {
+    setSearchedRecipes([]);
+  };
   return (
     <div className='flex flex-col items-center justify-center gap-3 w-full border-primary-light/10 border-t pt-6'>
       <h6 className=' text-center text-xl font-montserrat font-semibold uppercase'>
@@ -47,9 +49,22 @@ const FooterSearch = () => {
         <input
           ref={searchValue}
           type='text'
-          className=' outline-none bg-transparent text-primary-dark'
+          className=' outline-none bg-transparent text-primary-dark w-full'
           placeholder='Enter Meal'
         />
+        <span
+          className='block rounded-full text-primary-dark cursor-pointer'
+          onClick={clearRecipes}
+        >
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            viewBox='0 0 20 20'
+            fill='currentColor'
+            className='size-5'
+          >
+            <path d='M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z' />
+          </svg>
+        </span>
         <span
           className='text-primary-dark cursor-pointer hover:animate-pulse'
           onClick={findRecipes}
@@ -71,7 +86,7 @@ const FooterSearch = () => {
         </span>
       </div>
       <ul
-        className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3 w-full transition-all ease-linear duration-300 ${
+        className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3 w-full transition-all ease-linear duration-300  ${
           recipesDropDown
             ? "h-full translate-y-4 opacity-100 visible"
             : "h-0 -translate-y-4 opacity-0 invisible"
@@ -104,7 +119,7 @@ const FooterSearch = () => {
           </li>
         ))}
       </ul>
-      {error || searchedRecipes?.length === 0 ? (
+      {error && searchedRecipes?.length === 0 ? (
         <span className='text-center text-sm font-medium text-primary-orange my-2 tex'>
           {error || "No Recipes found! Please Search another meal."}
         </span>

@@ -45,11 +45,17 @@ const RecipeSlider = ({ recipes, title }: any) => {
               activeIndex >
               recipes.length -
                 ((typeof window !== "undefined" &&
-                  window.innerWidth < 768 &&
-                  2) ||
+                  window.innerWidth > 1024 &&
+                  4) ||
+                  (typeof window !== "undefined" &&
+                    window.innerWidth < 768 &&
+                    2) ||
                   (typeof window !== "undefined" &&
                     window.innerWidth > 768 &&
-                    3))
+                    3) ||
+                  (typeof window !== "undefined" &&
+                    window.innerWidth > 1024 &&
+                    4))
                 ? "text-primary-dark/40 border-primary-dark/40"
                 : "text-primary-dark border-primary-dark"
             }`}

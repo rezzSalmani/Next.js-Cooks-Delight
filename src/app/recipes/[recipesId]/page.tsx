@@ -50,24 +50,24 @@ async function RecipeDetail({ params }: { params: { recipesId: string } }) {
 
   return (
     <div className='space-y-8'>
-      <div className='flex items-center justify-center w-full py-16 px-10 rounded-4xl border border-[rgba(38,37,34,0.24)] bg-transparent '>
-        <div className='space-y-14'>
+      <div className='flex items-center justify-center w-full py-10 md:py-16 px-6 md:px-10 rounded-4xl border border-[rgba(38,37,34,0.24)] bg-transparent '>
+        <div className='space-y-14 w-full'>
           {/* title */}
           <div className='flex flex-col items-center justify-center text-center space-y-6'>
             <span className='rounded-2xl text-lg bg-primary-red py-1 px-4 uppercase text-primary-light'>
               Recipe
             </span>
-            <h2 className=' w-1/2 font-montserrat leading-[1] text-[80px] font-extrabold  child:block '>
+            <h2 className='w-[90%] px-8 md:px-0 md:w-4/5 xl:w-1/2 font-montserrat leading-[1] text-4xl md:text-[60px] lg:text-[80px] font-extrabold  child:block  '>
               {data.strMeal}
             </h2>
-            <span className='inline-block lg:w-2/5 text-xl text-primary-dark/50 '>
+            <span className='inline-block px-8 md:px-0 lg:w-2/5 text-base md:text-lg lg:text-xl text-primary-dark/50 '>
               Welcome to Cooks Delight, where culinary dreams come alive! Today,
               we embark on a journey of flavors with a dish that promises to
               elevate your dining experience – our Citrus Infusion Delight:
               Lemon Garlic Roasted Chicken.
             </span>
             {/* recipe details */}
-            <div className='flex items-center justify-center gap-6 child:flex child:items-center child:gap-2 font-semibold text-lg uppercase font-montserrat'>
+            <div className='flex items-center justify-center flex-wrap gap-4 md:gap-6 child:flex child:items-center child:gap-2 font-semibold text-lg uppercase font-montserrat'>
               <div>
                 <span>
                   <svg
@@ -165,7 +165,7 @@ async function RecipeDetail({ params }: { params: { recipesId: string } }) {
           {/* instruction and image */}
           <div className='flex flex-col-reverse lg:flex-row items-center lg:items-start justify-between gap-6 lg:gap-10 w-full h-full'>
             <div className='space-y-3 w-fit'>
-              <h6 className='text-[40px] uppercase font-montserrat font-bold text-[#333]'>
+              <h6 className='text-3xl md:text-[40px] uppercase font-montserrat font-bold text-[#333]'>
                 Instructions
               </h6>
               <p className=' text-justify text-lg text-primary-dark/60 font-light'>
@@ -200,13 +200,7 @@ async function RecipeDetail({ params }: { params: { recipesId: string } }) {
                 ></iframe>
               </div>
             ) : null}
-            <div
-              className={`${
-                data.strYoutube
-                  ? "flex flex-col items-start gap-4"
-                  : "flex items-start gap-4"
-              }`}
-            >
+            <div className={`flex flex-col md:flex-row items-start gap-4`}>
               <div className='w-full border border-[rgba(38,37,34,0.24)] shadow-md py-6 px-3 rounded-2xl bg-primary-light space-y-4 max-h-[400px] overflow-y-auto'>
                 <h6 className='font-montserrat font-semibold text-lg text-primary-red uppercase'>
                   Ingredients
@@ -253,11 +247,11 @@ async function RecipeDetail({ params }: { params: { recipesId: string } }) {
             </div>
           </div>
           {/* author section */}
-          <div className='flex justify-between items-end'>
-            <div className='flex items-center gap-4'>
+          <div className='flex flex-col lg:flex-row justify-between gap-4 items-end'>
+            <div className='flex flex-col xs:flex-row items-start gap-4'>
               <Image
                 src={"/images/AuthorImage.jpg"}
-                className='w-26 h-26 rounded-full border border-primary-lightBlue'
+                className='w-20 h-20 sm:w-26 sm:h-2/6 rounded-full border border-primary-lightBlue'
                 alt={"Isabella Russo"}
                 width={120}
                 height={80}
@@ -266,7 +260,7 @@ async function RecipeDetail({ params }: { params: { recipesId: string } }) {
                 <span className='text-lg font-semibold font-montserrat text-primary-dark/80'>
                   Isabella Russo
                 </span>
-                <p className='w-[500px] text-primary-dark/60 text-sm'>
+                <p className='w-fit lg:w-[500px] text-primary-dark/60 text-sm'>
                   In the world of pots and pans, I'm on a mission to turn every
                   meal into a masterpiece. Cooks Delight is not just a blog;
                   it's a shared space where the love for food transcends

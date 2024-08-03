@@ -44,12 +44,12 @@ const Recipes = async ({ searchParams }: SearchParamsType) => {
 
   return (
     <div className='space-y-10'>
-      <div className='relative flex flex-col items-center justify-center space-y-4 bg-[url("/images/category.jpg")] h-[580px] bg-cover bg-center rounded-3xl text-center text-white overflow-hidden'>
+      <div className='relative flex flex-col items-center justify-center space-y-4 md:space-y-8 bg-[url("/images/category.jpg")] h-[580px] bg-cover bg-center rounded-3xl text-center text-white overflow-hidden'>
         <span className='absolute inset-0 w-full h-full bg-black/20'></span>
-        <h4 className='text-[80px] font-montserrat font-extrabold uppercase z-20'>
+        <h4 className='text-3xl md:text-[50px] lg:text-[80px] font-montserrat font-extrabold uppercase z-20'>
           Recipe Categories
         </h4>
-        <span className='inline-block w-1/2 text-2xl z-20'>
+        <span className='inline-block w-[90%] md:w-1/2 text-base md:text-xl lg:text-2xl z-20'>
           Welcome to our categories section, where culinary inspiration meets
           organization! Whether you're a seasoned chef or a beginner in the
           kitchen, we do our best to help you explore a world of flavors through
