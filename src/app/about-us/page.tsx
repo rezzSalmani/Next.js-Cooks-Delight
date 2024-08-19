@@ -32,10 +32,10 @@ const AboutUs = async () => {
         </h4>
         <div className='flex flex-col items-start justify-between gap-5 h-full'>
           <p className='md:text-xl text-primary-dark/50'>
-            Bonjour and welcome to the heart of my kitchen! I'm Isabella Russo,
-            the culinary enthusiast behind this haven of flavors, Cooks Delight.
-            Join me on a gastronomic journey where each dish carries a story,
-            and every recipe is a crafted symphony of taste.
+            Bonjour and welcome to the heart of my kitchen! I&apos;m Isabella
+            Russo, the culinary enthusiast behind this haven of flavors, Cooks
+            Delight. Join me on a gastronomic journey where each dish carries a
+            story, and every recipe is a crafted symphony of taste.
           </p>
           <button className='rounded-3xl bg-primary-orange px-6 py-2 font-medium text-sm uppercase'>
             Explore Recipes
@@ -58,7 +58,7 @@ const AboutUs = async () => {
             </h6>
             <p>
               Born and raised in the vibrant culinary landscape of Italy, my
-              journey with food began in the heart of my family's kitchen.
+              journey with food began in the heart of my family&apos;s kitchen.
               Surrounded by the aroma of fresh herbs, the sizzle of pans, and
               the laughter of loved ones, I developed a deep appreciation for
               the art of cooking. My culinary education took me from the
@@ -74,9 +74,10 @@ const AboutUs = async () => {
               unique brushstroke to my culinary canvas.
             </p>
             <p>
-              Whether you're a seasoned home cook or just starting your culinary
-              adventure, I'm delighted to have you here. Let's stir, simmer, and
-              savor the beauty of creating something wonderful together.
+              Whether you&apos;re a seasoned home cook or just starting your
+              culinary adventure, I&apos;m delighted to have you here.
+              Let&apos;s stir, simmer, and savor the beauty of creating
+              something wonderful together.
             </p>
             <span className='block'>Warmest regards,</span>
             <span

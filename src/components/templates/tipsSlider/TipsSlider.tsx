@@ -2,10 +2,12 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { Swiper as SwiperType } from "swiper";
+
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const TipsSlider = ({ tips }: { tips: Tip[] }) => {
-  const [swiperControll, setSwiperControll] = useState(null);
+  const [swiperControll, setSwiperControll] = useState<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   return (
     <div className='p-4 md:p-10 bg-primary-lightBlue rounded-4xl space-y-4 md:space-y-10'>
@@ -40,7 +42,7 @@ const TipsSlider = ({ tips }: { tips: Tip[] }) => {
           </button>
           {/* move to right */}
           <button
-            onClick={() => swiperControll.slideNext()}
+            onClick={() => swiperControll?.slideNext()}
             className={`${
               activeIndex > tips.length / 3
                 ? "text-primary-dark/40 border-primary-dark/40"
@@ -68,7 +70,11 @@ const TipsSlider = ({ tips }: { tips: Tip[] }) => {
         slidesPerView={1}
         spaceBetween={16}
         onSwiper={(swiper) => setSwiperControll(swiper)}
-        onSlideChange={() => setActiveIndex(swiperControll?.activeIndex)}
+        onSlideChange={() => {
+          if (swiperControll?.activeIndex !== undefined) {
+            setActiveIndex(swiperControll.activeIndex);
+          }
+        }}
         autoplay={{
           delay: 1500,
           disableOnInteraction: true,
@@ -88,13 +94,13 @@ const TipsSlider = ({ tips }: { tips: Tip[] }) => {
         }}
       >
         {tips?.map((tip) => (
-          <SwiperSlide>
+          <SwiperSlide key={tip.id}>
             <div
               className={`flex items-end relative bg-center bg-cover min-h-[364px] md:min-h-[464px] bg-no-repeat rounded-3xl overflow-hidden p-6 group`}
               style={{ backgroundImage: `url(${tip.image})` }}
             >
-              <span className='absolute inset-0 w-full h-full transition-all ease-linear custom-dark-overly translate-y-80  group-hover:translate-y-0'></span>
-              <div className='child:inline-flex text-[#f0ebe1] z-20 space-y-3 transition-all ease-linear duration-300 translate-y-80 group-hover:translate-y-0'>
+              <span className='absolute inset-0 w-full h-full transition-all ease-in duration-300 custom-dark-overly lg:translate-y-80 group-hover:translate-y-0'></span>
+              <div className='child:inline-flex text-[#f0ebe1] z-20 space-y-3 transition-all ease-in duration-300 lg:translate-y-80 group-hover:translate-y-0'>
                 <span className='font-montserrat text-2xl font-bold'>
                   {tip.title}
                 </span>

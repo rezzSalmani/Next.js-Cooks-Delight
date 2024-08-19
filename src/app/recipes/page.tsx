@@ -51,7 +51,7 @@ const Recipes = async ({ searchParams }: SearchParamsType) => {
         </h4>
         <span className='inline-block w-[90%] md:w-1/2 text-base md:text-xl lg:text-2xl z-20'>
           Welcome to our categories section, where culinary inspiration meets
-          organization! Whether you're a seasoned chef or a beginner in the
+          organization! Whether you&apos;re a seasoned chef or a beginner in the
           kitchen, we do our best to help you explore a world of flavors through
           various recipe categories
         </span>

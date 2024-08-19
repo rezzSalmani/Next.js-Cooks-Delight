@@ -24,10 +24,10 @@ const TipsTricksPage = async () => {
           Our Essential Cooking Tips
         </h4>
         <span className='inline-block lg:w-2/5 sm:text-lg lg:text-xl text-primary-dark/60'>
-          Welcome to Cooks Delight's treasure trove of cooking wisdom! Whether
-          you're a seasoned chef or just starting your culinary journey, our
-          cooking tips are designed to elevate your skills, enhance your kitchen
-          experience, and bring joy to your cooking adventures.
+          Welcome to Cooks Delight &apos;s treasure trove of cooking wisdom!
+          Whether you&apos;re a seasoned chef or just starting your culinary
+          journey, our cooking tips are designed to elevate your skills, enhance
+          your kitchen experience, and bring joy to your cooking adventures.
         </span>
       </div>
       <div className='flex flex-col md:flex-row items-start md:items-center justify-between gap-6 lg:gap-10 border border-[rgba(38,37,34,0.24)] rounded-3xl py-6 md:py-10 px-4 lg:px-8 mt-16 child:flex child:items-center child:md:flex-col child:lg:flex-row child:gap-6 child:lg:gap-10'>
@@ -84,7 +84,7 @@ const TipsTricksPage = async () => {
         </h6>
         <div className='grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-4  w-full'>
           {basicsRecipes?.map((tips) => (
-            <RecipeItem recipe={tips} />
+            <RecipeItem recipe={tips} key={tips.idMeal} />
           ))}
         </div>
       </div>
@@ -95,7 +95,7 @@ const TipsTricksPage = async () => {
         </h6>
         <div className='grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-3'>
           {tipsAndTricks?.map((tip) => (
-            <RecipeItem recipe={tip} />
+            <RecipeItem recipe={tip} key={tip.idMeal} />
           ))}
         </div>
       </div>

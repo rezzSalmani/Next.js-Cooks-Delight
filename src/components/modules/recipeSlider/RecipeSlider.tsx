@@ -1,11 +1,12 @@
 "use client";
 import RecipeItem from "@/components/modules/recipeItem/RecipeItem";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { Swiper as SwiperType } from "swiper";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 const RecipeSlider = ({ recipes, title }: any) => {
-  const [swiperControll, setSwiperControll] = useState(null);
+  const [swiperControll, setSwiperControll] = useState<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   return (
     <section className='w-full h-full border border-[rgba(38,37,34,0.24)] rounded-[32px] p-2 xs:p-4 space-y-5 md:space-y-10'>
@@ -40,22 +41,17 @@ const RecipeSlider = ({ recipes, title }: any) => {
           </button>
           {/* move to right */}
           <button
-            onClick={() => swiperControll.slideNext()}
+            onClick={() => swiperControll?.slideNext()}
             className={`${
               activeIndex >
               recipes.length -
-                ((typeof window !== "undefined" &&
-                  window.innerWidth > 1024 &&
-                  4) ||
-                  (typeof window !== "undefined" &&
-                    window.innerWidth < 768 &&
-                    2) ||
-                  (typeof window !== "undefined" &&
-                    window.innerWidth > 768 &&
-                    3) ||
-                  (typeof window !== "undefined" &&
-                    window.innerWidth > 1024 &&
-                    4))
+                (typeof window !== "undefined"
+                  ? window.innerWidth > 1024
+                    ? 4
+                    : window.innerWidth < 768
+                    ? 2
+                    : 3
+                  : 1)
                 ? "text-primary-dark/40 border-primary-dark/40"
                 : "text-primary-dark border-primary-dark"
             }`}
@@ -84,7 +80,11 @@ const RecipeSlider = ({ recipes, title }: any) => {
         spaceBetween={16}
         slidesPerView={1}
         onSwiper={(swiper) => setSwiperControll(swiper)}
-        onSlideChange={() => setActiveIndex(swiperControll?.activeIndex)}
+        onSlideChange={() => {
+          if (swiperControll?.activeIndex !== undefined) {
+            setActiveIndex(swiperControll.activeIndex);
+          }
+        }}
         autoplay={{
           delay: 1500,
           disableOnInteraction: true,

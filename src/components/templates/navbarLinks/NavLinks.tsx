@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { it } from "node:test";
 import React from "react";
 
 export const navLicks = [
@@ -9,8 +10,10 @@ export const navLicks = [
   { title: "cooking tips", url: "/tips-tricks" },
   { title: "about us", url: "/about-us" },
 ];
+
 const NavLinks = ({ isFooter = false }) => {
   const currentPath = usePathname();
+
   return (
     <ul
       className={`flex items-center flex-wrap text-nowrap justify-center font-roboto font-medium child:relative uppercase text-sm lg:text-base child:flex child:items-center ${
@@ -24,10 +27,17 @@ const NavLinks = ({ isFooter = false }) => {
           <Link
             href={item.url}
             className={`hover:scale-105 transition-all ease-linear ${
-              !isFooter && currentPath && item.url === currentPath
-                ? "text-primary-dark font-bold "
-                : "text-primary-dark/40 "
+              !isFooter &&
+              currentPath !== "/" &&
+              item.url !== "/" &&
+              currentPath.startsWith(item.url) &&
+              "text-primary-dark font-bold"
             } ${
+              !isFooter &&
+              currentPath === item.url &&
+              "text-primary-dark font-bold"
+            }
+            ${
               isFooter
                 ? "text-primary-light"
                 : "text-primary-dark hover:text-primary-dark"
@@ -35,10 +45,19 @@ const NavLinks = ({ isFooter = false }) => {
           >
             {item.title}
           </Link>
+          {!isFooter && currentPath !== "/" ? (
+            <span
+              className={`absolute left-0 right-0 mx-auto -bottom-2 h-1 rounded-xl bg-primary-red transition-all ease-linear duration-300 delay-100 ${
+                item.url !== "/" && currentPath.startsWith(item.url)
+                  ? "w-full opacity-100 visible"
+                  : "w-0 opacity-0 invisible"
+              }`}
+            ></span>
+          ) : null}
           {!isFooter ? (
             <span
               className={`absolute left-0 right-0 mx-auto -bottom-2 h-1 rounded-xl bg-primary-red transition-all ease-linear duration-300 delay-100 ${
-                currentPath && item.url === currentPath
+                currentPath === item.url
                   ? "w-full opacity-100 visible"
                   : "w-0 opacity-0 invisible"
               }`}

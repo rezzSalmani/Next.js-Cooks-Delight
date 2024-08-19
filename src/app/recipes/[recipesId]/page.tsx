@@ -261,11 +261,11 @@ async function RecipeDetail({ params }: { params: { recipesId: string } }) {
                   Isabella Russo
                 </span>
                 <p className='w-fit lg:w-[500px] text-primary-dark/60 text-sm'>
-                  In the world of pots and pans, I'm on a mission to turn every
-                  meal into a masterpiece. Cooks Delight is not just a blog;
-                  it's a shared space where the love for food transcends
-                  boundaries. Here, we celebrate the art of crafting meals that
-                  not only nourish the body but also feed the soul.
+                  In the world of pots and pans, I&apos;m on a mission to turn
+                  every meal into a masterpiece. Cooks Delight is not just a
+                  blog; it&apos;s a shared space where the love for food
+                  transcends boundaries. Here, we celebrate the art of crafting
+                  meals that not only nourish the body but also feed the soul.
                 </p>
                 <div className='flex items-end justify-end'>
                   <button className=' px-6 py-2 font-medium text-sm rounded-3xl border border-primary-dark/70 hover:bg-primary-light/60 transition-all ease-linear text-primary-dark/70 hover:text-primary-dark'>
