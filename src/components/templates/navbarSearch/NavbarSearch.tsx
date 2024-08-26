@@ -35,7 +35,7 @@ const NavbarSearch = () => {
       const resData = await res.json();
       setSearchedRecipes(resData.meals);
     } catch (err) {
-      "there was error fetching recipes", err;
+      console.log("there was error fetching recipes", err);
     } finally {
       setIsLoading(false);
       if (searchValue.current) {
