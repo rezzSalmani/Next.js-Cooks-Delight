@@ -10,22 +10,27 @@ async function RecipeDetail({ params }: { params: { recipesId: string } }) {
   let similarRecipes = null;
   try {
     const res = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${+params.recipesId}`
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.recipesId}`
     );
 
     const resData = await res.json();
-    data = resData.meals[0];
+
+    if (!resData.meals || resData.meals.length === 0) {
+      return notFound();
+    } else {
+      data = resData.meals[0];
+    }
   } catch (err) {
     console.log(err);
   }
-  if (!data) notFound();
+
   try {
-    const res = await fetch(
+    const resCategory = await fetch(
       `https://www.themealdb.com/api/json/v1/1/filter.php?c=${data.strCategory}`
     );
-    if (!res.ok) similarRecipes = [];
-    const resData = await res.json();
-    similarRecipes = resData.meals.slice(0, 8);
+    if (!resCategory.ok) similarRecipes = [];
+    const resDataCategory = await resCategory.json();
+    similarRecipes = resDataCategory.meals.slice(0, 8);
   } catch (err) {
     console.log(err);
   }
@@ -47,6 +52,7 @@ async function RecipeDetail({ params }: { params: { recipesId: string } }) {
       }
     }
   }
+  if (!data) notFound();
 
   return (
     <div className='space-y-8'>

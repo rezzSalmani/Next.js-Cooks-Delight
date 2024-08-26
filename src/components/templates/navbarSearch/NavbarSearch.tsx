@@ -1,8 +1,8 @@
 "use client";
-import { getSearchRecipe } from "@/app/actions";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 type Recipe = {
   strMeal: string;
@@ -12,22 +12,16 @@ type Recipe = {
 const NavbarSearch = () => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean | null>(null);
   const [searchedRecipes, setSearchedRecipes] = useState<Recipe[]>([]);
-  const searchValue = useRef<HTMLInputElement>(null);
+  const searchValue = useRef<HTMLInputElement | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const searchBox = useRef<HTMLDivElement | null>(null);
 
-  // async function findRecipes() {
-  //   if (!searchValue.current) return;
-  //   setIsLoading(true);
-  //   const res = await getSearchRecipe(searchValue.current.value);
-  //   if (res.meals) {
-  //     setSearchedRecipes(res.meals);
-  //   }
+  const pathName = usePathname();
+  useEffect(() => {
+    setIsSearchOpen(false);
+  }, [pathName]);
 
-  //   console.log(res);
-  //   setIsLoading(false);
-  // }
   async function findRecipes() {
     try {
       setIsLoading(true);
@@ -41,9 +35,12 @@ const NavbarSearch = () => {
       const resData = await res.json();
       setSearchedRecipes(resData.meals);
     } catch (err) {
-      console.log("there was error fetching recipes", err);
+      "there was error fetching recipes", err;
     } finally {
       setIsLoading(false);
+      if (searchValue.current) {
+        searchValue.current.value = "";
+      }
     }
   }
   const useClickOutSide = (
@@ -129,7 +126,7 @@ const NavbarSearch = () => {
                 <span className='line-clamp-2 text-sm'>{recipe.strMeal}</span>
               </div>
               <Link
-                href={"/recopies" + recipe.idMeal}
+                href={"/recipes/" + recipe.idMeal}
                 className='flex items-center justify-end text-sm font-medium pr-2'
               >
                 Read

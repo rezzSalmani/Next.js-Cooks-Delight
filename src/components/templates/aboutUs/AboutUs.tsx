@@ -43,7 +43,7 @@ const AboutUs = () => {
         <Image
           width={700}
           height={700}
-          src={"/images/AboutusImage.jpg"}
+          src={"/images/aboutUs/aboutus.jpg"}
           alt='about us image'
           className=' object-cover object-top lg:object-center h-full rounded-3xl'
         />

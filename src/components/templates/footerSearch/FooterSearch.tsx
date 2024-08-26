@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import React, { useEffect, useRef, useState } from "react";
 type Recipe = {
   strMeal: string;
   strMealThumb: string;
@@ -14,6 +15,13 @@ const FooterSearch = () => {
   const searchValue = useRef<HTMLInputElement>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+  const pathName = usePathname();
+
+  useEffect(() => {
+    setRecipesDropDown(false);
+    setSearchedRecipes(null);
+    if (searchValue.current) searchValue.current.value = "";
+  }, [pathName]);
   async function findRecipes() {
     if (!searchValue.current) return;
     if (searchValue.current.value.length < 3)
@@ -112,7 +120,7 @@ const FooterSearch = () => {
             </span>
             <Link
               className='text-primary-orange'
-              href={"/recipes" + recipe.idMeal}
+              href={"/recipes/" + recipe.idMeal}
             >
               Read More
             </Link>

@@ -30,29 +30,6 @@ export default async function Home() {
   }
 
   const allFeaturedRecipes = await getRandomRecipe();
-  // const res = await fetch("http://localhost:3000/api/featuredRecipes");
-  // const resData = await res.json();
-
-  // let allFeaturedRecipes: {
-  //   strMeal: string;
-  //   strMealThumb: string;
-  //   idMeal: string;
-  //   strCategory: string;
-  //   strInstructions: string;
-  // }[] = [];
-
-  // for (let i = 0; i < 5; i++) {
-  //   const res = await fetch(
-  //     "https://www.themealdb.com/api/json/v1/1/random.php",
-  //     { cache: "no-cache" }
-  //   );
-  //   const data = await res.json();
-  //   if (data) {
-  //     const meals = data.meals[0];
-  //     allFeaturedRecipes.push(meals);
-  //     console.log(meals.idMeal);
-  //   }
-  // }
 
   return (
     <main className='flex min-h-screen flex-col items-center gap-4'>
